@@ -7,7 +7,7 @@ const Footer = () => (
 
     <p className="has-text-centered">
       <Trans i18nKey="footer">
-        Demo for a <a href="https://phrase.com/blog">Phrase blog</a> article.
+        Demo for a <a>Phrase blog</a> article.
         <br />
         Created with React, i18next, and Bulma.
       </Trans>
