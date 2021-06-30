@@ -1,19 +1,25 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-function LanguageSwitcher() {
+import { supportedLanguages } from "../config/i18n";
+import { languageCodeOnly } from "../services/i18n";
+
+function LanguageSwitcher({ onChange }) {
   const { i18n } = useTranslation();
+
   return (
     <div className="select">
       <select
-        value={i18n.language}
-        onChange={(e) =>
-          i18n.changeLanguage(e.target.value)
-        }
+        value={languageCodeOnly(i18n.language)}
+        onChange={(e) => onChange(e.target.value)}
       >
-        <option value="en">English</option>
-        <option value="ar">عربي</option>
+        {supportedLanguages.map((lang) => (
+          <option key={lang.code} value={lang.code}>
+            {lang.name}
+          </option>
+        ))}
       </select>
     </div>
   );
 }
+
 export default LanguageSwitcher;

@@ -1,11 +1,9 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
-function Item({
-  title,
-  imageUrl,
-  description,
-  estimatedWeightInKilograms,
-}) {
+function Item({ title, imageUrl, description, estimatedWeightInKilograms }) {
+  const { t } = useTranslation();
+
   return (
     <div className="column is-one-third">
       <div className="card">
@@ -23,10 +21,11 @@ function Item({
 
             <p>
               <span className="tag is-light is-medium">
-                Estimated weight
+                {t("estimated_weight")}
               </span>{" "}
-              {estimatedWeightInKilograms}
-              kg
+              {t("estimated_weight_kg", {
+                weight: estimatedWeightInKilograms,
+              })}
             </p>
           </div>
         </div>
